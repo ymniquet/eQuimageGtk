@@ -2,7 +2,7 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 # Author: Yann-Michel Niquet (contact@ymniquet.fr).
-# Version: 1.7.0 / 2025.05.11
+# Version: 1.8.0 / 2025.12.17
 # GUI updated (+).
 
 """Edition with external tools."""
@@ -130,7 +130,7 @@ class EditTool(BaseWindow):
             # Check if the image has been modified by the editor.
             mtime = os.path.getmtime(tmpfile)
             if mtime != ctime: # If so, load and register the new one...
-              print(f"The file {tmpfile} has been modified by {editor}; Reloading in eQuimage...")
+              print(f"The file {tmpfile} has been modified by {editor}; Reloading in eQuimageGtk...")
               image = self.app.ImageClass()
               image.load(tmpfile)
               if not image.is_valid(): raise RuntimeError(f"The image returned by {editor} is invalid.")

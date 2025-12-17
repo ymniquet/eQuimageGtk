@@ -4,11 +4,11 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 # Author: Yann-Michel Niquet (contact@ymniquet.fr).
-# Version: 1.7.0 / 2025.05.11
+# Version: 1.8.0 / 2025.12.17
 
-"""eQuimage is a python tool to postprocess astronomical images from Unistellar telescopes."""
+"""eQuimageGtk is a python tool (with a Gtk GUI) to postprocess astronomical images from Unistellar telescopes."""
 
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 
 import os
 os.environ["LANGUAGE"] = "en"
@@ -29,15 +29,15 @@ from .gui.logs import LogWindow
 from .imageprocessing import imageprocessing
 from .imageprocessing.Unistellar import UnistellarImage
 
-class eQuimageApp(Gtk.Application):
-  """The eQuimage application."""
+class eQuimageGtkApp(Gtk.Application):
+  """The eQuimageGtk application."""
 
   #######################
   # Gtk initialization. #
   #######################
 
   def __init__(self, *args, **kwargs):
-    """Initialize the eQuimage application."""
+    """Initialize the eQuimageGtk application."""
     super().__init__(*args, flags = Gio.ApplicationFlags.HANDLES_OPEN, **kwargs)
     self.initialize()
 
@@ -68,7 +68,7 @@ class eQuimageApp(Gtk.Application):
   def do_open(self, files, nfiles, hint):
     """Open command line file."""
     if nfiles > 1:
-      print("Syntax : eQuimage [image_file] where [image_file] is the image to open.")
+      print("Syntax : eQuimageGtk [image_file] where [image_file] is the image to open.")
       self.quit()
     self.activate()
     try:
@@ -85,7 +85,7 @@ class eQuimageApp(Gtk.Application):
   # Initialization.
 
   def initialize(self):
-    """Initialize the eQuimage object."""
+    """Initialize the eQuimageGtkApp object."""
     self.version = __version__
     self.packagepath = packagepath
     self.mainwindow = MainWindow(self)
@@ -96,7 +96,7 @@ class eQuimageApp(Gtk.Application):
     self.reset()
 
   def reset(self):
-    """Reset the eQuimage object data."""
+    """Reset the eQuimageGtkApp object data."""
     self.filename = None
     self.pathname = None
     self.basename = None
@@ -111,7 +111,7 @@ class eQuimageApp(Gtk.Application):
     self.meta = {}
 
   def clear(self, mainwindow = True):
-    """Clear the eQuimage object data and windows.
+    """Clear the eQuimageGtkApp object data and windows.
        Don't clear the main window if mainwindow is False."""
     if self.filename is not None: print(f"Closing {self.filename}...")
     self.reset()
@@ -243,7 +243,7 @@ class eQuimageApp(Gtk.Application):
 
   def logs(self):
     """Return logs from the operations stack."""
-    text = f"eQuimage v{self.version}\n"
+    text = f"eQuimageGtk v{self.version}\n"
     n = 0
     for operation, *images in self.operations:
       n += 1
@@ -410,8 +410,8 @@ class eQuimageApp(Gtk.Application):
 #
 
 def run():
-  """Run eQuimage."""
-  application = eQuimageApp()
+  """Run eQuimageGtk."""
+  application = eQuimageGtkApp()
   application.run(sys.argv)
 
 #
