@@ -3,12 +3,12 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "eQuimage"
-version = "1.7.0"
+name = "eQuimageGtk"
+version = "1.8.0"
 authors = [
   { name = "Yann-Michel Niquet", email = "contact@ymniquet.fr" },
 ]
-description = "eQuimage is a tool to postprocess astronomical images from Unistellar telescopes."
+description = "eQuimageGtk is a python tool (with a Gtk GUI) to postprocess astronomical images from Unistellar telescopes."
 license = "GPL-3.0-or-later"
 readme = "README.md"
 classifiers = [
@@ -32,10 +32,9 @@ dependencies = [
 
 [project.urls]
 homepage = "https://astro.ymniquet.fr/"
-repository = "https://github.com/ymniquet/eQuimage"
 
 [project.gui-scripts]
-eQuimage = "eQuimageGtk.eQuimage:run"
+eQuimageGtk = "eQuimageGtk.eQuimageGtk:run"
 
 [tool.setuptools.packages.find]
 namespaces = true

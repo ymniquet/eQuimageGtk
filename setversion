@@ -19,7 +19,7 @@ echo "Updating 'version' in pyproject.toml..."
 perl -pi -e "s/version = \".*\"/version = \"${VERSION}\"/" pyproject.toml
 
 echo "Updating '__version__' in src/equimagelab/__init__.py..."
-perl -pi -e "s/__version__ = \".*\"/__version__ = \"${VERSION}\"/" src/eQuimageGtk/eQuimage.py
+perl -pi -e "s/__version__ = \".*\"/__version__ = \"${VERSION}\"/" src/eQuimageGtk/eQuimageGtk.py
 
 for file in `find src -name *.py`;
 do

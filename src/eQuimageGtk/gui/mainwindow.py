@@ -2,7 +2,7 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 # Author: Yann-Michel Niquet (contact@ymniquet.fr).
-# Version: 1.7.0 / 2025.05.11
+# Version: 1.8.0 / 2025.12.17
 # GUI updated.
 
 """Main window."""
@@ -48,7 +48,7 @@ class MainWindow:
 
   def open(self):
     """Open main window."""
-    self.window = Gtk.ApplicationWindow(application = self.app, title = "eQuimage v"+self.app.version)
+    self.window = Gtk.ApplicationWindow(application = self.app, title = "eQuimageGtk v"+self.app.version)
     self.window.connect("delete-event", self.close)
     self.window.connect("key-press-event", self.key_press)
     self.window.connect("key-release-event", self.key_release)
@@ -141,7 +141,7 @@ class MainWindow:
     response = dialog.run()
     dialog.destroy()
     if response != Gtk.ResponseType.OK: return True
-    print("Exiting eQuimage...")
+    print("Exiting eQuimageGtk...")
     self.app.quit()
 
   # Images/tabs associations.
